@@ -22,10 +22,9 @@ return new class extends Migration
             $table->string('secondary_codition');
             $table->string('name');
             $table->string('alert_message');
-            $table->integer('crop_id')->unsigned();
+            $table->foreignId('crop_id');
             $table->foreign('crop_id')->references('id')->on('crops');
-            $table->timestamps('created_at');
-            $table->timestamps('update_at');
+            $table->timestamps();
         });
     }
 

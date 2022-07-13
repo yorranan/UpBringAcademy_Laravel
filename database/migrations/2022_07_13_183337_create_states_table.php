@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->string('uf');
-            $table->integer('country_id')->unsigned();
+            $table->foreignId('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->timestamps('update_at');
-            $table->timestamps('create_at');
-
+            $table->timestamps();
         });
     }
 

@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id('id');
-            $table->timestamps();
             $table->string('name');
-            $table->timestamps('created_at');
-            $table->timestamp('update_at');
             $table->string('iso_code_alpha_2');
+            $table->timestamps();
         });
     }
 

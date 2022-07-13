@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('measures', function (Blueprint $table) {
+        Schema::create('crops_places', function (Blueprint $table) {
             $table->id();
-            $table->double('temperature');
-            $table->double('umidity');
-            $table->string('condition');
-            $table->integer('place_id')->unsigned();
+            $table->foreignId('place_id');
             $table->foreign('place_id')->references('id')->on('places');
-            $table->integer('crop_id')->unsigned();
+            $table->foreignId('crop_id');
             $table->foreign('crop_id')->references('id')->on('crops');
-            $table->timestamps('created_at');
-            $table->timestamps('update_at');
+            $table->timestamps();
+
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measures');
+        Schema::dropIfExists('crops_places');
     }
 };

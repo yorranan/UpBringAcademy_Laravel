@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('crops_places', function (Blueprint $table) {
+        Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->integer('place_id')->unsigned();
-            $table->foreign('place_id')->references('id')->on('places');
-            $table->integer('crop_id')->unsigned();
-            $table->foreign('crop_id')->references('id')->on('crops');
+            $table->foreignId('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->string('name');
+            $table->string('status');
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crops_places');
+        Schema::dropIfExists('places');
     }
 };

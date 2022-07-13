@@ -20,13 +20,12 @@ return new class extends Migration
             $table->double('longitude');
             $table->string('cycle');
             $table->double('base_temperature');
-            $table->integer('growth_rate');
-            $table->integer('bloom_rate');
-            $table->integer('inflorescence_rate');
-            $table->timestamps('maturations_rate');
-            $table->timestamps('harvest_date');
-            $table->timestamps('created_at');
-            $table->timestamps('update_at');
+            $table->double('growth_rate');
+            $table->double('bloom_rate');
+            $table->double('inflorescence_rate');
+            $table->double('maturations_rate');
+            $table->timestamp('harvest_date');
+            $table->timestamps();
         });
     }
 
