@@ -175,12 +175,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <fieldset>
+<<<<<<< HEAD
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <span class="alert alert-danger">{{ $error }}</span>
                     @endforeach
                     
                 @endif
+=======
+>>>>>>> 3484685bbb0558d08e03447c6ffe54a184ea6923
                 <!-- Name input-->
                 <label class="col-md-4 control-label" for="textinput">Nome</label>
                 <div class="form-group">

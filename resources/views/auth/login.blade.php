@@ -37,6 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
 </head>
 <body>
+<<<<<<< HEAD
 
 @section('content')
     <div class="header">
@@ -135,6 +136,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
 
+=======
+
+@section('content')
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="w3layouts-logo">
+                        <h1><a href="">eDayGrees</a></h1>
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <nav>
+                        <ul class="nav navbar-nav">
+                            <li><a href="" class="hvr-sweep-to-bottom">Inicio</a></li>
+                            <li><a href="" class="hvr-sweep-to-bottom">Sobre</a></li>
+                            <li><a href="" class="hvr-sweep-to-bottom">Contato</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+    </div>
+    <!-- //header -->
+    <!-- banner -->
+    <div class="banner about-banner">
+        <div class="container">
+            <h2>Entrar</h2>
+            <div class="agileits-line"></div>
+        </div>
+    </div>
+    <!-- //banner -->
+    <!-- contact -->
+    <div class="loginmenu">
+
+        <form method="POST" action="{{ route('login') }}" class="form-horizontal">@csrf
+            <fieldset style="">
+                <label class="col-md-4 control-label" for="textinput"></label>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @if(isset($alert))
+                            <p>{{$alert}}</p>
+                        @endif
+                    </div>
+                </div>
+                <!-- Text input-->
+                <label class="col-md-4 control-label" for="textinput">Login</label>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input id="textinput" name="username" type="text" placeholder="Digite o nome do Usuário"
+                               class="form-control input-md" required="" style="">
+                    </div>
+                </div>
+                </br>
+
+                <!-- Password input-->
+                <label class="col-md-4 control-label" for="passwordinput">Senha</label>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input id="passwordinput" name="password" type="password" placeholder="Digite sua senha"
+                               class="form-control input-md" required="">
+                        <a href=""> Esqueceu sua senha?</a>
+                        <a href=""><p>Registre-se</p></a>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                    <div class="col-md-4">
+                        @if(isset($erro))
+                            <p>{{$erro}}</p>
+                        @endif
+
+
+                        <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary w-100">Entrar
+                        </button>
+
+                    </div>
+                </div>
+
+
+>>>>>>> 3484685bbb0558d08e03447c6ffe54a184ea6923
             </fieldset>
         </form>
     </div>
