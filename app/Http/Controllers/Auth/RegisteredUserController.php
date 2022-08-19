@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('session.register');
     }
 
     /**
@@ -33,21 +33,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            //'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'cpf' => ['required', 'string', 'max:14', 'min:11'],
+            'password' => ['required'/*, 'confirmed'*/], // Password confirmation deleted for tests
+            //'cpf' => ['required', 'string', 'max:14', 'min:11'], Deleted for tests
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'cpf' => $request->cpf,
-            'city_id' => $request->city,
+            /*'cpf' => $request->cpf, 
+            'city_id' => $request->city, Deleted for tests */
         ]);
+
+        
 
         event(new Registered($user));
 
