@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('cpf');
-            $table->foreignId('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->string('cpf')->nullable();
+            $table->foreignId('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
