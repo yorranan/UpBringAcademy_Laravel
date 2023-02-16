@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('rtl', function () {
 		return view('rtl');
-	})->name('rtl');
+	})->name('rtl') 
 
 	Route::get('user-management', function () {
 		return view('laravel-examples/user-management');
@@ -83,9 +84,9 @@ Route::get('/login', function () {
 })->name('login');
 
 //Projeto
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/inicio', function () {
     return view('index');
