@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pests', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('fenologic_state');
-            $table->double('temperature');
-            $table->double('umidity');
-            $table->integer('irrigation_period');
-            $table->string('secondary_codition');
             $table->string('name');
-            $table->string('alert_message');
-            $table->foreignId('crop_id');
-            $table->foreign('crop_id')->references('id')->on('crops');
+            $table->dateTime('beginDateTime');
+            $table->dateTime('endDateTime');
+            $table->string('description');
+            $table->integer('points_realization');
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pests');
+        Schema::dropIfExists('tasks');
     }
 };

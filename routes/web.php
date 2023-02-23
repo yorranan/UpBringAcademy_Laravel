@@ -35,11 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('rtl', function () {
 		return view('rtl');
-	})->name('rtl') 
+	})->name('rtl');
 
-	Route::get('user-management', function () {
-		return view('laravel-examples/user-management');
-	})->name('user-management');
+//	Route::get('user-management', function () {
+//		return view('laravel-examples/user-management');
+//	})->name('user-management');
 
 	Route::get('tables', function () {
 		return view('tables');
@@ -88,24 +88,6 @@ Route::get('/login', function () {
 //    return view('welcome');
 //});
 
-Route::get('/inicio', function () {
-    return view('index');
-})->name('index');
-
-Route::get('/sobre', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contato', function () {
-    return view('mail');
-})->name('contact');
-
-Route::get('/gallery', function () {
-    return view('gallery');
-})->name('gallery');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-//require __DIR__.'/auth.php';
+//Route::get('/inicio', function () {
+//    return view('index');
+//

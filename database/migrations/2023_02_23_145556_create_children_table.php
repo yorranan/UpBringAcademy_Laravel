@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create('childs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('uf');
-            $table->foreignId('country_id');
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists('childs');
     }
 };
