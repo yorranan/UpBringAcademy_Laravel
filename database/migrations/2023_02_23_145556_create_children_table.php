@@ -13,19 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('childs', function (Blueprint $table) {
+        Schema::create('children', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('parent_id');
+            $table->foreign('parent_id')->references('id')->on('users');
         });
+
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+        /**
+         * Reverse the migrations.
+         *
+         * @return void
+         */
+        public function down()
     {
-        Schema::dropIfExists('childs');
+        Schema::dropIfExists('children');
     }
-};
+    };

@@ -37,18 +37,20 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required'/*, 'confirmed'*/], // Password confirmation deleted for tests
-            //'cpf' => ['required', 'string', 'max:14', 'min:11'], Deleted for tests
+            'age' => ['required', 'integer']
+                        //'cpf' => ['required', 'string', 'max:14', 'min:11'], Deleted for tests
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            /*'cpf' => $request->cpf, 
+            'age' => 20,
+            /*'cpf' => $request->cpf,
             'city_id' => $request->city, Deleted for tests */
         ]);
 
-        
+
 
         event(new Registered($user));
 
