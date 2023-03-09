@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('finished_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->foreignId('tasks_id');
-            $table->foreign('tasks_id')->references('id')->on('tasks');
+            $table->foreignId('id');
+            $table->foreign('id')->references('id')->on('users');
+            $table->foreignId('id');
+            $table->foreign('id')->references('id')->on('tasks');
             $table->string('feedback');
             $table->boolean('status');
             $table->timestamps();

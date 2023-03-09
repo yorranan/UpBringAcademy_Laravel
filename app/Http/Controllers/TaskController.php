@@ -24,14 +24,17 @@ class TaskController extends Controller
         $endDateTime = $request->endDateTime;
         $description = $request->description;
         $points_realization = $request->points_realization;
+        $user_id = 
 
 
         $task = Task::create([
+            'user_id' => ,
             'name' => $name,
             'beginDateTime' => $beginDateTime,
             'endDateTime' => $endDateTime,
             'description' => $description,
             'points_realization' => $points_realization,
+            'finished' => false
         ]);
     }
 }
