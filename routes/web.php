@@ -89,6 +89,8 @@ Route::get('/login', function () {
 Route::get('/task', [TaskController::class, 'createView'])->name('taskCreateView');
 Route::post('/task', [TaskController::class, 'createTask'])->name('taskCreateTask');
 
+Route::get('/usuarioId', [UserController::class, 'openDashboard']);
+
 Route::get('/task/show', [TaskController::class, 'show'])->name('show');
 
 //Projeto
