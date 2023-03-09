@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('gratifications_children', function (Blueprint $table) {
             $table->id();
             $table->foreignId('gratifications_id');
-            $table->foreign('gratifications_id')->references('id')->on('gratification');
+            $table->foreign('gratifications_id')->references('id')->on('gratifications');
             $table->foreignId('children_id');
             $table->foreign('children_id')->references('id')->on('users');
             $table->timestamps();

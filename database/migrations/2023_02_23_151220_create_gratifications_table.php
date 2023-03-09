@@ -13,19 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gratification', function (Blueprint $table) {
+        Schema::create('gratifications', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('realizationPoints');
+            $table->string('description');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
+     * Reverse the migrations
+     *         @return void
      */
     public function down()
     {
-        Schema::dropIfExists('gratification');
+        Schema::dropIfExists('gratifications');
     }
 };
