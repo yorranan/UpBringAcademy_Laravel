@@ -5,7 +5,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\ResetController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\InfoUserController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
+
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	})->name('dashboard');
@@ -35,10 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', function () {
 		return view('profile');
 	})->name('profile');
-
-	Route::get('rtl', function () {
-		return view('rtl');
-	})->name('rtl');
 
 //	Route::get('user-management', function () {
 //		return view('laravel-examples/user-management');
@@ -66,6 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+    Route::get('/task', [TaskController::class, 'createView'])->name('taskCreateView');
+    Route::post('/task', [TaskController::class, 'createTask'])->name('taskCreateTask');
+
 });
 
 
@@ -86,8 +89,7 @@ Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
 
-Route::get('/task', [TaskController::class, 'createView'])->name('taskCreateView');
-Route::post('/task', [TaskController::class, 'createTask'])->name('taskCreateTask');
+
 
 Route::get('/task/show', [TaskController::class, 'show'])->name('show');
 
@@ -95,7 +97,3 @@ Route::get('/task/show', [TaskController::class, 'show'])->name('show');
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-
-//Route::get('/inicio', function () {
-//    return view('index');
-//
