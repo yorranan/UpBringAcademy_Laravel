@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('finished_tasks', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('users_id');
             $table->foreign('users_id')->references('id')->on('users');
             $table->foreignId('tasks_id');

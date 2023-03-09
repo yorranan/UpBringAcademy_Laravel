@@ -83,6 +83,9 @@ Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
 
+Route::get('/update-score', array(\App\Http\Controllers\UserController::class, 'goUpdateScoreView'))->name('updateScoreViewGo');
+Route::post('/update-score', [\App\Http\Controllers\UserController::class, 'goUpdateScoreView'])->name('updateScoreViewGo');
+
 //Projeto
 //Route::get('/', function () {
 //    return view('welcome');
