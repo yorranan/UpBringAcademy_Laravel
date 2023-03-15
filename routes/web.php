@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CreateTaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,13 +68,11 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('sign-up');
 });
 
-
-
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
     Route::post('/register', [RegisteredUserController::class, 'store']);
-    Route::get('/login', [AuthenticatedSessionController::class, 'create']);
-    Route::post('/session', [AuthenticatedSessionController::class, 'store']);
+    Route::get('/login', [SessionsController::class, 'create']);
+    Route::post('/session', [SessionsController::class, 'store'])->name('session');
 	Route::get('/login/forgot-password', [ResetController::class, 'create']);
 	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
 	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
@@ -82,16 +80,17 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
+
 Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
+
+
 
 Route::get('/task', [TaskController::class, 'createView'])->name('taskCreateView');
 Route::post('/task', [TaskController::class, 'createTask'])->name('taskCreateTask');
 
 Route::get('/usuarioId', [UserController::class, 'openDashboard']);
-
-Route::get('/task/show', [TaskController::class, 'show'])->name('show');
 
 //Projeto
 //Route::get('/', function () {

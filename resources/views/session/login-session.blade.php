@@ -17,7 +17,7 @@
                   <p class="mb-0">Password <b>secret</b></p>
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="/session">
+                <form role="form" method="POST" action="\session">
                     @csrf
                     <label>Email</label>
                     <div class="mb-3">
