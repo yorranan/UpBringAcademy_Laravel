@@ -25,7 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {
-		return view('dashboard');
+		$userId = auth()->user()->id;
+    	return view('dashboard', compact('userId'));
 	})->name('dashboard');
 
 	Route::get('billing', function () {
@@ -66,6 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+
+	Route::get('/task', [CreateTaskController::class, 'createView'])->name('taskCreateView');
+	Route::post('/task', [CreateTaskController::class, 'createTask'])->name('taskCreateTask');
+
+
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -84,13 +90,6 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
-
-
-
-Route::get('/task', [TaskController::class, 'createView'])->name('taskCreateView');
-Route::post('/task', [TaskController::class, 'createTask'])->name('taskCreateTask');
-
-Route::get('/usuarioId', [UserController::class, 'openDashboard']);
 
 //Projeto
 //Route::get('/', function () {

@@ -9,15 +9,17 @@ class Task extends Model{
     
     use HasFactory;
 
-    protected $table = 'users';
+    protected $table = 'tasks';
     
+    protected $primary_key = 'id';
+
     protected $fillable = [
-        //'user_id',
+        'user_id',
         'name',
         'beginDateTime',
         'endDateTime',
         'description',
         'points_realization',
-        'finished'
+        'fineshed'
     ];
 }

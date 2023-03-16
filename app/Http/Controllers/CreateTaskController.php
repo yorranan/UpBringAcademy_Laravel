@@ -6,7 +6,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use resources\views\task\index;
 
-class TaskController extends Controller
+class CreateTaskController extends Controller
 {
     public function createView(){
         return view('task.create');
@@ -34,7 +34,7 @@ class TaskController extends Controller
             'endDateTime' => $endDateTime,
             'description' => $description,
             'points_realization' => $points_realization,
-            'finished' => false
+            'fineshed' => false
         ]);
     }
 }
