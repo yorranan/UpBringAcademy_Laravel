@@ -18,8 +18,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => 1,
             'name' => 'admin',
+            'age' => '1985-06-20',
             'email' => 'admin@softui.com',
             'password' => Hash::make('secret'),
+            'admin' => true,
             'created_at' => now(),
             'updated_at' => now()
         ]);
