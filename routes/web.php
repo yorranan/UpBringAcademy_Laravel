@@ -3,9 +3,10 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CreateTaskController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\CreateTaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		$userId = auth()->user()->id;
-    	return view('dashboard', compact('userId'));
-	})->name('dashboard');
+	Route::get('dashboard', [DashboardController::class, 'create'])->name('dashboard');
+	Route::get('dashboardTask', [DashboardController::class, 'geTask'])->name('dashboardGetTask');
 
 	Route::get('billing', function () {
 		return view('billing');
@@ -61,14 +60,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('static-sign-up');
 	})->name('sign-up');
 
-    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
 
-	Route::get('/task', [CreateTaskController::class, 'create']);
+	Route::get('/task', [CreateTaskController::class, 'create'])->name('createTask');
 	Route::post('/task', [CreateTaskController::class, 'store'])->name('taskStore');
 
 

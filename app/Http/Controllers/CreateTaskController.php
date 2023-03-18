@@ -31,5 +31,7 @@ class CreateTaskController extends Controller
             'points_realization' => $points_realization,
             'fineshed' => false
         ]);
+
+        return redirect()->route('dashboard');
     }
 }

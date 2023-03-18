@@ -3,6 +3,8 @@
     <title>New Task</title>
 </head>
 
+<a href="{{ route('dashboard') }}">Voltar</a>
+
 <p>Criando um tarefa uau!</p>
 
 <form action="{{ route('taskStore') }}" method="post">
@@ -12,5 +14,5 @@
     <h1><input type="datetime-local" id="endDateTime" name="endDateTime" placeholder="Data Final"></h1>
     <h1><input type="text" id="description" name="description" placeholder="Descricao"></h1>
     <h1><input type="number" id="points_realization" name="points_realization" placeholder="Pontos"></h1 >
-    <h1><button type="submit">é um botão</button></h1>
+    <h1><button type="submit">Criar</button></h1>
 </form>
