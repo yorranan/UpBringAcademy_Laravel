@@ -8,16 +8,11 @@ use resources\views\task\index;
 
 class CreateTaskController extends Controller
 {
-    public function createView(){
-        return view('task.create');
+    public function create(){
+        return view('task.createTask');
     }
 
-    public function show(){
-        $task = Task::get();
-        dd($task);
-    }
-
-    public function createTask(Request $request){
+    public function store(Request $request){
 
         $name = $request->name;
         $beginDateTime = $request->beginDateTime;

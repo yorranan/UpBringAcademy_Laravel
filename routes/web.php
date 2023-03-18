@@ -68,8 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('sign-up');
 
-	Route::get('/task', [CreateTaskController::class, 'createView'])->name('taskCreateView');
-	Route::post('/task', [CreateTaskController::class, 'createTask'])->name('taskCreateTask');
+	Route::get('/task', [CreateTaskController::class, 'create']);
+	Route::post('/task', [CreateTaskController::class, 'store'])->name('taskStore');
 
 
 });

@@ -5,7 +5,7 @@
 
 <p>Criando um tarefa uau!</p>
 
-<form action="{{ route('taskCreateTask') }}" method="post">
+<form action="{{ route('taskStore') }}" method="post">
     @csrf
     <h1><input type="text" id="name" name="name" placeholder="Nome"></h1>
     <h1><input type="datetime-local" id="beginDateTime" name="beginDateTime" placeholder="Data Inicial"></h1>
