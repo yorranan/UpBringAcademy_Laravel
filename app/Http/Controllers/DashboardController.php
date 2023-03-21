@@ -14,15 +14,6 @@ class DashboardController extends Controller
             ->where('user_id', $user->id)
             ->select('users.name as user_name', 'tasks.name as task_name', 'tasks.description')
             ->get();
-        return view('dashboard')->with('tasks', $tasks);
-    }
-
-    public function getTask(){
-        $tasks = DB::table('users')
-            ->join('tasks', 'users.id', '=', 'tasks.user_id')
-            ->select('users.name', 'tasks.name as task_name')
-            ->get();
-        
-        return response()->json($tasks);
+        return view('dashboard')->with('tasks', $tasks)->with('user', $user);
     }
 }

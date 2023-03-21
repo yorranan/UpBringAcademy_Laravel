@@ -5,24 +5,21 @@
 
 <a href="{{ route('logout') }}">Logout</a>
 <a href="{{ route('createTask') }}">NewTask</a>
+<a href="{{ route('profile') }}">{{$user->name}}</a>
 
 <table>
   <thead>
       <tr>
-          <th>Nome do Usuário</th>
           <th>Nome da Tarefa</th>
           <th>Descrição da Tarefa</th>
       </tr>
   </thead>
   <tbody>
-      @foreach($tasks as $task)
+      @foreach($tasks as $tasks)
           <tr>
-              <td>{{ $task->user_name }}</td>
-              <td>{{ $task->task_name }}</td>
-              <td>{{ $task->description }}</td>
+              <td><a href="{{ route('dashboard') }}">{{ $tasks->task_name }}    </a></td>
+              <td>{{ $tasks->description }}</td>
           </tr>
       @endforeach
   </tbody>
-</table>
-
-  
+</table>  
