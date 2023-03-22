@@ -4,5 +4,6 @@
 </head>
 <body>
     <a href="{{ route('dashboard') }}">Voltar</a>
-    <h6>{{ $task->name }}</h6>
+    <a href="{{ route('editTaskCreate', ['id' => $task->id]) }}">editar</a>
+    <h1>{{ $task->name }}</h1>
 </body>

@@ -2,8 +2,8 @@
 <head>
   <title>Menu</title>
 </head>
-
-<a href="{{ route('logout') }}">Logout</a>
+<body>
+    <a href="{{ route('logout') }}">Logout</a>
 <a href="{{ route('createTask') }}">NewTask</a>
 <a href="{{ route('profile') }}">{{$user->name}}</a>
 
@@ -22,4 +22,5 @@
           </tr>
       @endforeach
   </tbody>
-</table>  
+</table>
+</body>

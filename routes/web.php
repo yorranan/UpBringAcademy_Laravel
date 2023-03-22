@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CreateTaskController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditTaskController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReadTaskController;
 use App\Http\Controllers\SessionsController;
@@ -73,6 +74,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/task', [CreateTaskController::class, 'store'])->name('taskStore');
 	
 	Route::get('/read', [ReadTaskController::class, 'create'])->name('readTaskCreate');
+
+	Route::get('/edit', [EditTaskController::class, 'create'])->name('editTaskCreate');
+	Route::post('/edit', [EditTaskController::class, 'store'])->name('editTaskStore');
+	Route::get('/edit/delete', [EditTaskController::class, 'delete'])->name('editTaskDelete');
+
 });
 
 Route::group(['middleware' => 'guest'], function () {
