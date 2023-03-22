@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CreateTaskController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReadTaskController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\UserController;
@@ -70,8 +71,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/task', [CreateTaskController::class, 'create'])->name('createTask');
 	Route::post('/task', [CreateTaskController::class, 'store'])->name('taskStore');
-
-
+	
+	Route::get('/read', [ReadTaskController::class, 'create'])->name('readTaskCreate');
 });
 
 Route::group(['middleware' => 'guest'], function () {

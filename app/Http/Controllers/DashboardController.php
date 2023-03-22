@@ -12,7 +12,7 @@ class DashboardController extends Controller
         $tasks = DB::table('users')
             ->join('tasks', 'users.id', '=', 'tasks.user_id')
             ->where('user_id', $user->id)
-            ->select('users.name as user_name', 'tasks.name as task_name', 'tasks.description')
+            ->select('tasks.id as task_id', 'tasks.name as task_name', 'tasks.description')
             ->get();
         return view('dashboard')->with('tasks', $tasks)->with('user', $user);
     }

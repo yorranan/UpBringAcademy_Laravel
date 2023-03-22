@@ -17,7 +17,7 @@
   <tbody>
       @foreach($tasks as $tasks)
           <tr>
-              <td><a href="{{ route('dashboard') }}">{{ $tasks->task_name }}    </a></td>
+              <td><a href="{{ route('readTaskCreate', ['id' => $tasks->task_id]) }}">{{ $tasks->task_name }}    </a></td>
               <td>{{ $tasks->description }}</td>
           </tr>
       @endforeach
