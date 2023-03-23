@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('gratifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->integer('realizationPoints');
             $table->string('description');

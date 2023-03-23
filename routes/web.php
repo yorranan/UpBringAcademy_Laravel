@@ -1,9 +1,16 @@
 <?php
 
+
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CreateTaskController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditTaskController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReadTaskController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\InfoUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+	Route::get('dashboard', [DashboardController::class, 'create'])->name('dashboard');
+	Route::get('dashboardTask', [DashboardController::class, 'geTask'])->name('dashboardGetTask');
 
 	Route::get('billing', function () {
 		return view('billing');
@@ -57,21 +63,29 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('static-sign-up');
 	})->name('sign-up');
 
-    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+	Route::get('/user-profile', [InfoUserController::class, 'create'])->name('profile');
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+
+	Route::get('/task', [CreateTaskController::class, 'create'])->name('createTask');
+	Route::post('/task', [CreateTaskController::class, 'store'])->name('taskStore');
+	
+	Route::get('/read', [ReadTaskController::class, 'create'])->name('readTaskCreate');
+
+	Route::get('/edit', [EditTaskController::class, 'create'])->name('editTaskCreate');
+	Route::post('/edit', [EditTaskController::class, 'store'])->name('editTaskStore');
+	Route::get('/edit/delete', [EditTaskController::class, 'delete'])->name('editTaskDelete');
+
 });
-
-
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
     Route::post('/register', [RegisteredUserController::class, 'store']);
-    Route::get('/login', [AuthenticatedSessionController::class, 'create']);
-    Route::post('/session', [AuthenticatedSessionController::class, 'store']);
+    Route::get('/login', [SessionsController::class, 'create']);
+    Route::post('/session', [SessionsController::class, 'store'])->name('session');
 	Route::get('/login/forgot-password', [ResetController::class, 'create']);
 	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
 	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
@@ -83,8 +97,6 @@ Route::get('/login', function () {
     return view('session/login-session');
 })->name('login');
 
-Route::get('/update-score', array(\App\Http\Controllers\UserController::class, 'goUpdateScoreView'))->name('updateScoreViewGo');
-Route::post('/update-score', [\App\Http\Controllers\UserController::class, 'goUpdateScoreView'])->name('updateScoreViewGo');
 
 //Projeto
 //Route::get('/', function () {

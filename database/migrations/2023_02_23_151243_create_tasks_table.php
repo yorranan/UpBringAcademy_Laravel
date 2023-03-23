@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->dateTime('beginDateTime');
             $table->dateTime('endDateTime');
             $table->string('description');
             $table->integer('points_realization');
+            $table->boolean('fineshed');
             $table->timestamps();
         });
     }

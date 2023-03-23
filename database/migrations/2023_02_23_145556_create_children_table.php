@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('children', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->integer('points');
             $table->foreignId('parent_id');
             $table->foreign('parent_id')->references('id')->on('users');
+            $table->timestamps();
         });
 
     }
@@ -32,4 +32,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('children');
     }
-    };
+};
