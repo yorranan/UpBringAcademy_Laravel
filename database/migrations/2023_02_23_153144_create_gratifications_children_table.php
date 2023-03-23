@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gratifications_children');
+        Schema::dropIfExists('gratification_children');
     }
 };

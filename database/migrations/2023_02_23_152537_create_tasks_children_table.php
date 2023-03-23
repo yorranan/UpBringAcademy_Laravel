@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_tasks');
+        Schema::dropIfExists('tasks_children');
     }
 };
