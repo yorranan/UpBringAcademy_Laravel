@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('children', function (Blueprint $table) {
-            $table->id();
             $table->integer('points');
+            $table->foreignId('childrem_id');
+            $table->foreign('childrem_id')->references('id')->on('users');
             $table->foreignId('parent_id');
             $table->foreign('parent_id')->references('id')->on('users');
             $table->timestamps();
