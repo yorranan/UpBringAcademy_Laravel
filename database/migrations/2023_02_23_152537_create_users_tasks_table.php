@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('users_id')->references('id')->on('users');
             $table->foreignId('tasks_id');
             $table->foreign('tasks_id')->references('id')->on('tasks');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
