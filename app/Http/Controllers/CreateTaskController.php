@@ -21,7 +21,6 @@ class CreateTaskController extends Controller
         $points_realization = $request->points_realization;
         $user_id = auth()->user()->id;
 
-
         $task = Task::create([
             'user_id' => $user_id,
             'name' => $name,
