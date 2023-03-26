@@ -34,7 +34,43 @@
                               <label>Data Final</label> 
                               <input type="datetime-local" class="form-control" name="endDateTime" id="endDateTime" placeholder="Data Final" aria-label="Data Final" aria-describedby="endDateTime-addon">
                             </div>
-                        </div> 
+                        </div>
+                        <div>
+                          <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Nome
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Descrição
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Inicio
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($child as $i => $child)
+                            <tr>
+                                <td class="text-center">
+                                    <p class="text-xs font-weight-bold mb-0">{{$i+1}}</p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs font-weight-bold mb-0">{{$child->user->name}}</p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs font-weight-bold mb-0">
+                                      <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->children_id}}">
+                                      </div>
+                                    </p>
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        </div>
                         <div class="text-center">
                           <button type="submit" class="btn bg-gradient-info w-10 mt-4 mb-0" value="submit">Criar</button>
                         </div>

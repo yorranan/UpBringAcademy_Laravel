@@ -13,7 +13,7 @@ class TaskChildren extends Model
 
     protected $fillable = [
         'tasks_id',
-        'children_id',
+        'users_id',
         'status'
     ];
 }

@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/login', function () {return view('dashboard');})->name('sign-up');
 	Route::get('/create-task', [TaskController::class, 'create'])->name('create-task');
 	Route::get('/add-task', [TaskController::class, 'add'])->name('add-task');
-	Route::get('/edit-task', [TaskController::class, 'edit'])->name('edit-task');
+	Route::get('/edit-task/{id}', [TaskController::class, 'edit'])->name('edit-task');
 	Route::post('/task-store', [TaskController::class, 'store'])->name('task-store');
 	Route::get('/create-gratification', [GratificationController::class, 'create'])->name('create-gratification');
 	Route::post('/gratification-store', [GratificationController::class, 'store'])->name('gratification-store');
