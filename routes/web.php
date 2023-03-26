@@ -7,6 +7,7 @@ use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CreateTaskController;
+use App\Http\Controllers\GratificationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
@@ -30,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard', [DashboardController::class, 'create'])->name('dashboard');
 	Route::get('dashboardTask', [DashboardController::class, 'geTask'])->name('dashboardGetTask');
 	Route::get('profile', function () {return view('profile');})->name('profile');
-	Route::get('user-management', function () {return view('laravel-examples/user-management');})->name('user-management');
+	Route::get('user-management', [InfoUserController::class, 'create'])->name('user-management');
 	Route::get('tables', function () {return view('tables');})->name('tables');
     Route::get('static-sign-in', function () {return view('static-sign-in');})->name('sign-in');
     Route::get('static-sign-up', function () {return view('static-sign-up');})->name('sign-up');
@@ -40,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/login', function () {return view('dashboard');})->name('sign-up');
 	Route::get('/create-task', [CreateTaskController::class, 'create'])->name('create-task');
 	Route::post('/task-store', [CreateTaskController::class, 'store'])->name('task-store');
+    Route::get('/create-gratification', [GratificationController::class, 'create'])->name('create-gratification');
+    Route::post('/gratification-store', [GratificationController::class, 'store'])->name('gratification-store');
     Route::get('/new-user', [CreateTaskController::class, 'store'])->name('new-user'); //mudar
 
 });
