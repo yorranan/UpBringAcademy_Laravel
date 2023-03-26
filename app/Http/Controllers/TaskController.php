@@ -61,7 +61,7 @@ class TaskController extends Controller
             'endDateTime' => $request->endDateTime,
             'description' => $request->description,
             'points_realization' => $request->points_realization,
-        ]);
+            ]);
 
         foreach($request->children as $children){
             $task_children = TaskChildren::create([

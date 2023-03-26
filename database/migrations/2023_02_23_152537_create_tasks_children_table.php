@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('users_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreignId('user_children_id');
+            $table->foreign('user_children_id')->references('user_children_id')->on('children');
             $table->foreignId('tasks_id');
             $table->foreign('tasks_id')->references('id')->on('tasks');
             $table->boolean('status');
