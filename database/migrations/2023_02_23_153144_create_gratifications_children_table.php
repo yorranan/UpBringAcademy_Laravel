@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('gratifications_id')->references('id')->on('gratifications');
             $table->foreignId('children_id');
             $table->foreign('children_id')->references('id')->on('users');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gratifications_children');
+        Schema::dropIfExists('gratification_children');
     }
 };
