@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/add-task', [TaskController::class, 'add'])->name('add-task');
 	Route::get('/edit-task/{id}', [TaskController::class, 'edit'])->name('edit-task');
 	Route::post('/update-task/{id}', [TaskController::class, 'update'])->name('update-task');
+	Route::get('/delete-task/{id}', [TaskController::class, 'delete'])->name('delete-task');
 	Route::post('/task-store', [TaskController::class, 'store'])->name('task-store');
 	Route::get('/create-gratification', [GratificationController::class, 'create'])->name('create-gratification');
 	Route::post('/gratification-store', [GratificationController::class, 'store'])->name('gratification-store');

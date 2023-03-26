@@ -54,9 +54,11 @@
                                         <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar tarefa">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
+                                        <a href="{{route('delete-task',['id' => $task->id])}}">
                                         <span>
                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                         </span>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

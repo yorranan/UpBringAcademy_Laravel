@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Child;
 use App\Models\Task;
 use App\Models\TaskChildren;
+use Illuminate\Database\Console\Migrations\RollbackCommand;
 use Illuminate\Http\Request;
 use resources\views\task\index;
 
@@ -70,5 +71,11 @@ class TaskController extends Controller
         }
 
         return redirect()->route('create-task');
+    }
+
+    public function delete($id){
+        TaskChildren::where('tasks_id', $id)->delete();
+        Task::where('id', $id)->delete();
+        return view('create-task');
     }
 }
