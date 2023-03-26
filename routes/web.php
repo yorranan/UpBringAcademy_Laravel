@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard', [DashboardController::class, 'create'])->name('dashboard');
 	Route::get('dashboardTask', [DashboardController::class, 'geTask'])->name('dashboardGetTask');
 	Route::get('profile', function () {return view('profile');})->name('profile');
-	Route::get('user-management', function () {return view('laravel-examples/user-management');})->name('user-management');
+	Route::get('user-management', [InfoUserController::class, 'create'])->name('user-management');
 	Route::get('tables', function () {return view('tables');})->name('tables');
     Route::get('static-sign-in', function () {return view('static-sign-in');})->name('sign-in');
     Route::get('static-sign-up', function () {return view('static-sign-up');})->name('sign-up');
