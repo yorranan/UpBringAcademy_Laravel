@@ -17,6 +17,7 @@ class TaskController extends Controller
     }
 
     public function add(){
+
         $child = Child::where('parent_id', '=', auth()->user()->id)->with('user')->get();
         return view('task.addTask')->with('child', $child);
     }
@@ -30,17 +31,17 @@ class TaskController extends Controller
     }
 
     public function update(Request $request, $id){
-        
+
         Task::where('id', $id)->update([
             'name' => $request->name,
             'beginDateTime' => $request->beginDateTime,
             'endDateTime' => $request->endDateTime,
             'description' => $request->description,
-            'points_realization' => $request->points_realization, 
+            'points_realization' => $request->points_realization,
         ]);
-        
+
         TaskChildren::where('tasks_id', '=', $id)->delete();
-        
+
         foreach($request->children as $children){
             $task_children = TaskChildren::create([
                 'users_id' => $children,
@@ -50,7 +51,7 @@ class TaskController extends Controller
         }
         return redirect()->route('create-task');
     }
-    
+
     public function store(Request $request){
 
         $task = Task::create([
