@@ -22,7 +22,7 @@
 
                             <div class="mb-3">
                               <label>Pontos</label>
-                              <input type="number" class="form-control" name="points_realization" id="points_realization" placeholder="Ponts" aria-label="Pontos" aria-describedby="points_realization-addon">
+                              <input type="number" class="form-control" name="points_realization" id="points_realization" placeholder="Pontos" aria-label="Pontos" aria-describedby="points_realization-addon">
                             </div>
 
                             <div class="mb-3">
