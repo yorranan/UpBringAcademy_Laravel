@@ -8,9 +8,9 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <div>
-                                <h5 class="mb-0">All Users</h5>
+                                <h5 class="mb-0">Bonificações</h5>
                             </div>
-                            <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Bonificação</a>
+                            <a href="add-gratification" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Bonificação</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -42,12 +42,14 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$gratification->realizationPoints}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                        <a href="{{route('edit-gratification',['id' => $gratification->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Bonificação">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
+                                        <a href="{{route('delete-gratification',['id' => $gratification->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Deletar Bonificação">
                                         <span>
                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                         </span>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

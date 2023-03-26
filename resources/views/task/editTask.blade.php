@@ -72,7 +72,7 @@
                         </table>
                         </div>
                         <div class="text-center">
-                          <button type="submit" class="btn bg-gradient-info w-10 mt-4 mb-0" value="submit">Criar</button>
+                          <button type="submit" class="btn bg-gradient-info w-10 mt-4 mb-0" value="submit">Editar</button>
                         </div>
                       </form>
                     </div>

@@ -51,10 +51,10 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$task->points_realization}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar tarefa">
+                                        <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Tarefa">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
-                                        <a href="{{route('delete-task',['id' => $task->id])}}">
+                                        <a href="{{route('delete-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Deletar Tarefa">
                                         <span>
                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                         </span>

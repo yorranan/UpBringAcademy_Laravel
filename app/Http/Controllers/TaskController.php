@@ -76,6 +76,6 @@ class TaskController extends Controller
     public function delete($id){
         TaskChildren::where('tasks_id', $id)->delete();
         Task::where('id', $id)->delete();
-        return view('create-task');
+        return redirect()->route('create-task');
     }
 }
