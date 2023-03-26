@@ -6,7 +6,8 @@ use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\CreateTaskController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\GratificationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
@@ -38,10 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {return view('dashboard');})->name('sign-up');
-	Route::get('/create-task', [CreateTaskController::class, 'create'])->name('create-task');
-	Route::post('/task-store', [CreateTaskController::class, 'store'])->name('task-store');
+	Route::get('/create-task', [TaskController::class, 'create'])->name('create-task');
+	Route::get('/add-task', [TaskController::class, 'add'])->name('add-task');
+	Route::get('/edit-task', [TaskController::class, 'edit'])->name('edit-task');
+	Route::post('/task-store', [TaskController::class, 'store'])->name('task-store');
+	Route::get('/create-gratification', [GratificationController::class, 'create'])->name('create-gratification');
+	Route::post('/gratification-store', [GratificationController::class, 'store'])->name('gratification-store');
     Route::get('/new-user', [CreateTaskController::class, 'store'])->name('new-user'); //mudar
-
 });
 
 Route::group(['middleware' => 'guest'], function () {
