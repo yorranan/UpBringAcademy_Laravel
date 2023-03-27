@@ -12,12 +12,12 @@ class Child extends Model
     protected $table = 'children';
 
     protected $fillable = [
-        'children_id',
+        'user_children_id',
         'parent_id',
         'points'
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'children_id');
+        return $this->belongsTo(User::class, 'user_children_id');
     }
 }

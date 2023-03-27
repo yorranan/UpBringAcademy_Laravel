@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_tasks', function (Blueprint $table) {
+        Schema::create('tasks_children', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_children_id');
             $table->foreign('user_children_id')->references('user_children_id')->on('children');

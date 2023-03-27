@@ -7,7 +7,9 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <label><h5 class="mb-0">Tarefas</h5></label>
+                            @if(auth()->user()->admin)
                             <a href="{{route('add-task')}}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Tarefa</a>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
