@@ -46,11 +46,9 @@ class RegisteredUserController extends Controller
             'age' => $request->age,
             'password' => Hash::make($request->password),
             'admin' => true,
-            /*'cpf' => $request->cpf, 
-            'city_id' => $request->city, Deleted for tests */
         ]);
 
-        
+
 
         event(new Registered($user));
 
