@@ -22,7 +22,6 @@ return new class extends Migration
             $table->dateTime('endDateTime');
             $table->string('description');
             $table->integer('points_realization');
-            $table->boolean('finished');
             $table->timestamps();
         });
     }
