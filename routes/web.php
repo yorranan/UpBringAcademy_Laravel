@@ -58,10 +58,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user-management', [InfoUserController::class, 'create'])->name('user-management');
 	Route::get('/new-user', [ChildController::class, 'create'])->name('new-user');
     Route::post('/user-store', [ChildController::class, 'store'])->name('user-store');
-
-
-
-
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -73,7 +69,6 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
 	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
 	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
-
 });
 
 Route::get('/login', function () {return view('session/login-session');})->name('login');

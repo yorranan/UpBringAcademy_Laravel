@@ -13,7 +13,7 @@
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">NOSSO TIME</a>
+                        <a class="nav-link text-muted" target="_blank">4DEVs</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www3.unicentro.br/" class="nav-link text-muted" target="_blank">UNICENTRO</a>

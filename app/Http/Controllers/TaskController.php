@@ -25,7 +25,7 @@ class TaskController extends Controller
     public function edit($id){
         $task = Task::find($id);
         $child = Child::where('parent_id', '=', auth()->user()->id)->with('user')
-                        ->leftJoin('tasks_children', 'children.children_id', '=', 'tasks_children.users_id')
+                        ->leftJoin('tasks_children', 'children.user_children_id', '=', 'tasks_children.user_children_id')
                         ->get();
         return view('task.editTask')->with('task', $task)->with('child', $child);
     }
@@ -53,7 +53,6 @@ class TaskController extends Controller
     }
 
     public function store(Request $request){
-
         $task = Task::create([
             'user_id' => auth()->user()->id,
             'name' => $request->name,
@@ -65,7 +64,7 @@ class TaskController extends Controller
 
         foreach($request->children as $children){
             $task_children = TaskChildren::create([
-                'users_id' => $children,
+                'user_children_id' => $children,
                 'tasks_id' => $task->id,
                 'status' => false
             ]);

@@ -13,7 +13,7 @@ class GratificationChildren extends Model
 
     protected $fillable = [
         'gratifications_id',
-        'children_id',
+        'user_children_id',
         'status'
     ];
 }

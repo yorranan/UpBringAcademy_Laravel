@@ -4,20 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Child;
 use App\Models\Task;
-use Illuminate\Http\Request;
+use App\Models\TaskChildren;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function create(){
+        $count = 0;
+        $open = 0;
 
-        $childs = Child::where('parent_id', '=', auth()->user()->id)->with('user')->get();
-        foreach ($childs as $child){
-            $child->Task = Task::where('finished', true)->sum('finished');
+        if(auth()->user()->admin){
+            $task = Task::where('user_id', '=', (auth()->user()->id))->get();
+        } else {
+            $task = TaskChildren::where('user_children_id', '=', (auth()->user()->id))->get();
+            foreach ($task as $task){
+                if ($task->status) {
+                    $count++;
+                }else{
+                    $open++;
+                }
+            }
         }
-        return view('dashboard', compact('childs'));
-
+        return view('dashboard')->with('count', $count)->with('open', $open)->with('task', $task) ;
     }
+
 
     public function getTask(){
         $tasks = DB::table('users')
