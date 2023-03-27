@@ -83,4 +83,8 @@ class TaskController extends Controller
         Task::where('id', $id)->delete();
         return redirect()->route('create-task');
     }
+
+    public function conclued(){
+        
+    }
 }

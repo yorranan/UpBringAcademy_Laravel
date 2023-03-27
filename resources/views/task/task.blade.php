@@ -32,6 +32,11 @@
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Pontos
                                     </th>
+                                    @if(!auth()->user()->admin)
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Status
+                                    </th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -53,6 +58,7 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$task->points_realization}}</p>
                                     </td>
                                     <td class="text-center">
+                                        @if(auth()->user()->admin)
                                         <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Tarefa">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
@@ -61,6 +67,17 @@
                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                         </span>
                                         </a>
+                                        @else
+                                            @if($task->status)
+                                                <p class="text-xs font-weight-bold mb-0">concluido</p>
+                                            @else
+                                                @if(\Carbon\Carbon::parse($task->endDateTime)->isPast())
+                                                    <p class="text-xs font-weight-bold mb-0">atrasada</p>
+                                                @else
+                                                    <p class="text-xs font-weight-bold mb-0">aberta</p>
+                                                @endif
+                                            @endif
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
