@@ -16,9 +16,8 @@ class GratificationController extends Controller
             $gratification = Gratification::where('user_id', '=', (auth()->user()->id))->get();
             return view('gratification.gratification')->with('gratification', $gratification);
         }else{
-            $gratification = Gratification::join('children', 'gratifications.user_id', '=', 'children.parent_id')
-                ->where('children.user_children_id', '=', (auth()->user()->id))->get();
             $child = Child::where('user_children_id', (auth()->user()->id))->first();
+            $gratification = Gratification::where('user_id', $child->parent_id)->get();
             return view('gratification.gratification')->with('gratification', $gratification)->with('child', $child);
         }
        
@@ -64,6 +63,7 @@ class GratificationController extends Controller
     }
 
     public function rasom($id){
+
         $gratification = Gratification::where('id', $id)->first();
         $children = Child::where('user_children_id', auth()->user()->id)->first();
 
