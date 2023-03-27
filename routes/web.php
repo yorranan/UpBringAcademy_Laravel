@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/edit-gratification/{id}', [GratificationController::class, 'edit'])->name('edit-gratification');
 	Route::post('/update-gratification/{id}', [GratificationController::class, 'update'])->name('update-gratification');
 	Route::get('/delete-gratification/{id}', [GratificationController::class, 'delete'])->name('delete-gratification');
+	Route::get('/rasom-gratification/{id}', [GratificationController::class, 'rasom'])->name('rasom-gratification');
 
 	Route::get('/new-user', [CreateTaskController::class, 'store'])->name('new-user'); //mudar
 });
