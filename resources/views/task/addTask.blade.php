@@ -22,7 +22,7 @@
 
                             <div class="mb-3">
                               <label>Pontos</label>
-                              <input type="number" class="form-control" name="points_realization" id="points_realization" placeholder="Ponts" aria-label="Pontos" aria-describedby="points_realization-addon">
+                              <input type="number" class="form-control" name="points_realization" id="points_realization" placeholder="Pontos" aria-label="Pontos" aria-describedby="points_realization-addon">
                             </div>
 
                             <div class="mb-3">
@@ -40,13 +40,13 @@
                             <thead>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Quantidade
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                     Nome
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Descrição
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Inicio
+                                    Adicionar
                                 </th>
                             </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold mb-0">
                                       <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->children_id}}">
+                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->user_children_id}}">
                                       </div>
                                     </p>
                                 </td>

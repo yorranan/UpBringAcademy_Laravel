@@ -39,13 +39,23 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user-profile', [InfoUserController::class, 'create']);
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {return view('dashboard');})->name('sign-up');
+	
 	Route::get('/create-task', [TaskController::class, 'create'])->name('create-task');
 	Route::get('/add-task', [TaskController::class, 'add'])->name('add-task');
 	Route::get('/edit-task/{id}', [TaskController::class, 'edit'])->name('edit-task');
+	Route::post('/update-task/{id}', [TaskController::class, 'update'])->name('update-task');
+	Route::get('/delete-task/{id}', [TaskController::class, 'delete'])->name('delete-task');
 	Route::post('/task-store', [TaskController::class, 'store'])->name('task-store');
+	
 	Route::get('/create-gratification', [GratificationController::class, 'create'])->name('create-gratification');
 	Route::post('/gratification-store', [GratificationController::class, 'store'])->name('gratification-store');
-    Route::get('/new-user', [CreateTaskController::class, 'store'])->name('new-user'); //mudar
+    Route::get('/add-gratification', [GratificationController::class, 'add'])->name('add-gratification');
+	Route::get('/edit-gratification/{id}', [GratificationController::class, 'edit'])->name('edit-gratification');
+	Route::post('/update-gratification/{id}', [GratificationController::class, 'update'])->name('update-gratification');
+	Route::get('/delete-gratification/{id}', [GratificationController::class, 'delete'])->name('delete-gratification');
+	Route::get('/rasom-gratification/{id}', [GratificationController::class, 'rasom'])->name('rasom-gratification');
+
+	Route::get('/new-user', [CreateTaskController::class, 'store'])->name('new-user'); //mudar
 });
 
 Route::group(['middleware' => 'guest'], function () {

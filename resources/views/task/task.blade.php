@@ -7,7 +7,9 @@
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
                             <label><h5 class="mb-0">Tarefas</h5></label>
+                            @if(auth()->user()->admin)
                             <a href="{{route('add-task')}}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Tarefa</a>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -30,6 +32,11 @@
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Pontos
                                     </th>
+                                    @if(!auth()->user()->admin)
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Status
+                                    </th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,12 +58,26 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$task->points_realization}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar tarefa">
+                                        @if(auth()->user()->admin)
+                                        <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Tarefa">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
+                                        <a href="{{route('delete-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Deletar Tarefa">
                                         <span>
                                             <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                         </span>
+                                        </a>
+                                        @else
+                                            @if($task->status)
+                                                <p class="text-xs font-weight-bold mb-0">concluido</p>
+                                            @else
+                                                @if(\Carbon\Carbon::parse($task->endDateTime)->isPast())
+                                                    <p class="text-xs font-weight-bold mb-0">atrasada</p>
+                                                @else
+                                                    <p class="text-xs font-weight-bold mb-0">aberta</p>
+                                                @endif
+                                            @endif
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

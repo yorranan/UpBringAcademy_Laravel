@@ -20,6 +20,5 @@ class Task extends Model{
         'endDateTime',
         'description',
         'points_realization',
-        'fineshed'
     ];
 }
