@@ -26,6 +26,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         $child = Child::where('parent_id', '=', auth()->user()->id)->with('user')
                         ->leftJoin('tasks_children', 'children.user_children_id', '=', 'tasks_children.user_children_id')
+                        ->where('children.user_children_id',$id)
                         ->get();
         return view('task.editTask')->with('task', $task)->with('child', $child);
     }

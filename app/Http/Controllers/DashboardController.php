@@ -12,20 +12,20 @@ class DashboardController extends Controller
     public function create(){
         $count = 0;
         $open = 0;
-
-        if(auth()->user()->admin){
-            $task = Task::where('user_id', '=', (auth()->user()->id))->get();
-        } else {
-            $task = TaskChildren::where('user_children_id', '=', (auth()->user()->id))->get();
-            foreach ($task as $task){
-                if ($task->status) {
-                    $count++;
-                }else{
-                    $open++;
-                }
-            }
+        $tasks = Task::where('user_id', '=', (auth()->user()->id))->get();
+        foreach ($tasks as $task) {
+            $count = Child::where('parent_id', '=', auth()->user()->id)->with('user')
+                ->leftJoin('tasks_children', 'children.user_children_id', '=', 'tasks_children.user_children_id')
+                ->where('status', 1)
+                ->count();
         }
-        return view('dashboard')->with('count', $count)->with('open', $open)->with('task', $task) ;
+        foreach ($tasks as $task) {
+            $open = Child::where('parent_id', '=', auth()->user()->id)->with('user')
+                ->leftJoin('tasks_children', 'children.user_children_id', '=', 'tasks_children.user_children_id')
+                ->where('status', 0)
+                ->count();
+        }
+        return view('dashboard')->with('count', $count)->with('open', $open)->with('task', $tasks) ;
     }
 
 
