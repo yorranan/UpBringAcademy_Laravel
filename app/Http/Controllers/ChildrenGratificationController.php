@@ -89,7 +89,7 @@ class ChildrenGratificationController extends Controller
             'status' => true
         ]);
 
-        return redirect()->route('create-gratification');
+        return redirect()->route('child-gratification');
     }
 
     /**
