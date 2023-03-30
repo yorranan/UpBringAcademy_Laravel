@@ -62,7 +62,7 @@
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold mb-0">
                                       <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->user->user_children_id}}">
+                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->user_children_id}}">
                                       </div>
                                     </p>
                                 </td>
