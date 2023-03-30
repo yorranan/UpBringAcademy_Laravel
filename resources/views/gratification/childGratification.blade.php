@@ -1,4 +1,4 @@
-@extends('layouts.user_type.auth')
+@extends('layouts.user_type.childAuth')
 
 @section('content')
 
@@ -10,7 +10,7 @@
                             <div>
                                 <h5 class="mb-0">Bonificações</h5>
                             </div>
-                            <a href="add-gratification" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Bonificação</a>
+                            <div><h5 class="mb-0">Pontos: {{$user->points}}</h5></div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -42,14 +42,11 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$gratification->realizationPoints}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('edit-gratification',['id' => $gratification->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Bonificação">
-                                            <i class="fas fa-user-edit text-secondary"></i>
-                                        </a>
-                                        <a href="{{route('delete-gratification',['id' => $gratification->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Deletar Bonificação">
-                                        <span>
-                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                        </span>
-                                        </a>
+                                            @if($gratification->realizationPoints <= $user->points)
+                                                <a href="{{route('rasom-gratification',['id' => $gratification->id])}}" class="btn bg-gradient-primary btn-sm mb-0" type="button">Resgatar</a>
+                                            @else
+                                                <a class="btn bg-gradient-primary btn-sm mb-0 opacity-5" type="button">Resgatar</a>
+                                            @endif
                                     </td>
                                 </tr>
                                 @endforeach

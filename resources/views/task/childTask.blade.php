@@ -1,4 +1,4 @@
-@extends('layouts.user_type.auth')
+@extends('layouts.user_type.childAuth')
 @section('content')
 
         <div class="row">
@@ -6,8 +6,9 @@
                 <div class="card mb-4 mx-4">
                     <div class="card-header pb-0">
                         <div class="d-flex flex-row justify-content-between">
-                            <label><h5 class="mb-0">Tarefas</h5></label>
-                            <a href="{{route('add-task')}}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nova Tarefa</a>
+                            <div>
+                                <h5 class="mb-0">Tarefas</h5>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -33,7 +34,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($task as $task)
+                                @foreach($tasks as $task)
                                 <tr>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">{{$task->name}}</p>
@@ -51,14 +52,12 @@
                                         <p class="text-xs font-weight-bold mb-0">{{$task->points_realization}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('edit-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Tarefa">
-                                            <i class="fas fa-user-edit text-secondary"></i>
-                                        </a>
-                                        <a href="{{route('delete-task',['id' => $task->id])}}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Deletar Tarefa">
-                                        <span>
-                                            <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                        </span>
-                                        </a>
+                                        <form action="{{ route('finished-task', ['id' => $task->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" data-bs-toggle="tooltip" data-bs-original-title="Finalizar Tarefa">
+                                                <i class="ni ni-check-bold text-secondary"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
