@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Child;
+use App\Models\Gratification;
+use App\Models\GratificationChildren;
+use App\Models\Task;
+use App\Models\TaskChildren;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ChildrenGratificationController extends Controller
@@ -23,7 +29,10 @@ class ChildrenGratificationController extends Controller
      */
     public function create()
     {
-
+        $user = Child::where('user_children_id', '=', auth()->user()->id)->first();
+        $user_id = $user->parent_id;
+        $gratification = Gratification::where('user_id', '=', $user_id)->get();
+        return view('gratification.childGratification')->with('gratification', $gratification);
     }
 
     /**
@@ -68,7 +77,22 @@ class ChildrenGratificationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Child::where('user_children_id', '=', auth()->user()->id)->first();
+        $user_id = $user->parent_id;
+        $gratification = Gratification::where('user_id', '=', $user_id)->first();
+        $pointChild = Child::where('user_children_id', auth()->user()->id)->first();
+        $error = 'Voce não possui saldo Suficiente';
+        $debit = 0;
+
+        if ($pointChild->points < $gratification->points_realization) {
+            $debit = $pointChild->points - $gratification->points_realization;
+            $getBonification = Child::where('user_children_id', '=', auth()->user()->id)->update([
+                'points' => $pointChild
+            ]);
+            return view('gratification.childGratification')->with('gratification', $gratification);
+        } else {
+            return view('gratification.childGratification')->with('gratification', $gratification)->with('error',$error);
+        }
     }
 
     /**

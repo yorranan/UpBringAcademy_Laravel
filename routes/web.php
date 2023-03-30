@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/finished-task/{id}', [ChildrenTaksController::class, 'update'])->name('finished-task');
 
     Route::get('/child-gratification', [ChildrenGratificationController::class, 'create'])->name('child-gratification');
-    Route::post('/finished-task/{id}', [ChildrenGratificationController::class, 'update'])->name('finished-task');
+    Route::post('/get-bonification/{id}', [ChildrenGratificationController::class, 'update'])->name('get-bonification');
 
 
 

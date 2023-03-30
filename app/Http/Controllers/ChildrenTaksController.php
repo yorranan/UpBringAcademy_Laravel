@@ -28,7 +28,6 @@ class ChildrenTaksController extends Controller
      */
     public function create()
     {
-
         $tasks = TaskChildren::where('user_children_id', '=', auth()->user()->id)
             ->leftJoin('tasks', 'tasks_children.tasks_id', '=', 'tasks.id' )
             ->get()
