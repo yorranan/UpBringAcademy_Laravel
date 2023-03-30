@@ -10,6 +10,9 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\GratificationController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChildrenDashboardController;
+use App\Http\Controllers\ChildrenTaksController;
+use App\Http\Controllers\ChildrenGratificationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', [DashboardController::class, 'create'])->name('dashboard');
+    Route::get('child-dashboard', [ChildrenDashboardController::class, 'create'])->name('child-dashboard');
 	Route::get('dashboardTask', [DashboardController::class, 'geTask'])->name('dashboardGetTask');
 	Route::get('profile', function () {return view('profile');})->name('profile');
 
@@ -58,6 +62,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user-management', [InfoUserController::class, 'create'])->name('user-management');
 	Route::get('/new-user', [ChildController::class, 'create'])->name('new-user');
     Route::post('/user-store', [ChildController::class, 'store'])->name('user-store');
+
+    Route::get('/task-child', [ChildrenTaksController::class, 'create'])->name('task-child');
+    Route::post('/finished-task/{id}', [ChildrenTaksController::class, 'update'])->name('finished-task');
+
+    Route::get('/child-gratification', [ChildrenGratificationController::class, 'create'])->name('child-gratification');
+    Route::post('/finished-task/{id}', [ChildrenGratificationController::class, 'update'])->name('finished-task');
+
+
+
 });
 
 Route::group(['middleware' => 'guest'], function () {

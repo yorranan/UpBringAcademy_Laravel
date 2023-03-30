@@ -14,11 +14,6 @@
                     <span class="d-sm-inline d-none">Sign Out</span>
                 </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-                <a href="profile" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                </a>
-            </li>
             </ul>
         </div>
     </div>
