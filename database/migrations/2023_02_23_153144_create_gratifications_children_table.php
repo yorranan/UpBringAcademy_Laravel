@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('gratifications_id');
             $table->foreign('gratifications_id')->references('id')->on('gratifications');
             $table->foreignId('user_children_id');
-            $table->foreign('user_children_id')->references('user_children_id')->on('children');
+            $table->foreign('user_children_id')->references('id')->on('users');
             $table->boolean('status');
             $table->timestamps();
         });

@@ -16,8 +16,4 @@ class TaskChildren extends Model
         'user_children_id',
         'status'
     ];
-
-    public function task(){
-        return $this->belongsTo(Task::class, 'tasks_id');
-    }
 }

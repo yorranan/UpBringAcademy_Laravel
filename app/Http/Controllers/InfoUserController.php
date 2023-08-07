@@ -15,7 +15,7 @@ class InfoUserController extends Controller
 
     public function create()
     {
-        $child = Child::where('parent_id', '=', (auth()->user()->id))->with('user')-> get();
+        $child = Child::where('parent_id', '=', auth()->user()->id)->with('user')->get();
         return view('user.user-management')->with('child', $child);
     }
 
@@ -34,7 +34,6 @@ class InfoUserController extends Controller
             if(env('IS_DEMO') && Auth::user()->id == 1)
             {
                 return redirect()->back()->withErrors(['msg2' => 'You are in a demo version, you can\'t change the email address.']);
-
             }
 
         }

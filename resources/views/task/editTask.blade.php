@@ -9,7 +9,7 @@
                         <div><h5>Criar Tarefa</h5></div>
                         <div class="d-flex flex-row justify-content-between">
                             @csrf
-                            
+
                             <div class="mb-3">
                               <label>Nome</label>
                               <input type="text" class="form-control" name="name" id="name" placeholder="Nome" value="{{$task->name}}" aria-label="Nome" aria-describedby="name-addon">
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="mb-3">
-                              <label>Data Final</label> 
+                              <label>Data Final</label>
                               <input type="datetime-local" class="form-control" name="endDateTime" id="endDateTime" placeholder="Data Final" aria-label="Data Final" value="{{$task->endDateTime}}" aria-describedby="endDateTime-addon">
                             </div>
                         </div>
@@ -40,13 +40,13 @@
                             <thead>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Quantidade
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                     Nome
                                 </th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Adicionar
+                                    Descrição
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Inicio
                                 </th>
                             </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold mb-0">
                                       <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->user_children_id}}" {{ isset($child->tasks_id) ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" name="children[]" id="children[]" value="{{$child->user_children_id}}" >
                                       </div>
                                     </p>
                                 </td>
